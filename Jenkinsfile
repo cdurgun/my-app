@@ -27,7 +27,7 @@ node {
        		channel: '#jenkins-pipeline-demo',
        		color: 'good', 
        		message: 'SonarQube Analysis Failed !', 
-       		teamDomain: 'javahomecloud',
+       		teamDomain: 'cdurgun',
        		tokenCredentialId: 'slack-demo'    
                 error "Pipeline aborted due to quality gate failure: ${qg.status}"
               }
