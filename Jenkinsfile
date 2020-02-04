@@ -11,13 +11,12 @@ node {
    
    }
    
-   stage('Sonar Publish'){
-	   withCredentials([string(credentialsId: 'sonarqube', variable: 'sonarToken')]) {
-        def sonarToken = "sonar.login=${sonarToken}"
-        sh "${mvn} sonar:sonar -D${sonarUrl}  -D${sonarToken}"
-	 }
-      
-   }
+   stage('SonarQube Analysis') {
+        def mvnHome =  tool name: 'jenkins-maven', type: 'maven'
+        withSonarQubeEnv('sonarqube') { 
+          sh "${mvnHome}/bin/mvn sonar:sonar"
+        }
+    }
    
    stage("Quality Gate Status Check"){
           timeout(time: 1, unit: 'HOURS') {
