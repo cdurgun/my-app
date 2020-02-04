@@ -32,7 +32,14 @@ node {
               }
           }
       }        	
-
+     stage('Slack Notification'){
+       slackSend baseUrl: 'https://hooks.slack.com/services/',
+       channel: '#jenkins-pipeline-demo',
+       color: 'good', 
+       message: 'Welcome to Jenkins, Slack!', 
+       teamDomain: 'cdurgun',
+       tokenCredentialId: 'slack-demo'
+    }
    stage('Email Notification'){
 		mail bcc: '', body: """Hi Team, You build successfully deployed
 		                       Job URL : ${env.JOB_URL}
