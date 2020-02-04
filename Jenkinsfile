@@ -1,8 +1,8 @@
 
 node {
    // This is to demo github action	
-   def sonarUrl = 'sonar.host.url=http://172.31.30.136:9000'
-   def mvn = tool (name: 'maven3', type: 'maven') + '/bin/mvn'
+   def sonarUrl = 'sonar.host.url=http://165.22.203.249:9000'
+   def mvn = tool (name: 'jenkins-maven', type: 'maven') + '/bin/mvn'
    stage('SCM Checkout'){
     // Clone repo
 	git branch: 'master', 
